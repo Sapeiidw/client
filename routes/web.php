@@ -17,6 +17,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth','verified','role:user'])->get('/dashboard', function () {
+Route::middleware(['auth','verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+
+Route::get('/user', function () {
+    return 'Cuman bisa diakses oleh role user';
+})->middleware('role:user');
